@@ -1,0 +1,25 @@
+
+#something, button{
+    color: brown;
+    font-size: xx-large;
+}
+
+
+.info{
+    color: yellowgreen;
+    font-size: medium;
+}
+li.game{
+    font-size: xx-small
+
+}
+*{font-weight: 10000;}
+dd[idk^="n"]{
+    font-size: xx-small;
+}
+#ava{
+    margin-left: 100px;
+    padding: 100px;
+    border: saddlebrown;
+    border-style: solid;
+}

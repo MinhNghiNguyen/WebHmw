@@ -1,0 +1,35 @@
+Internet: hệ thống các mạng kết nối với nhau (inter: among,between-net:network)
+OSI model (Open System Interconnection)
+Application: Cung cấp giao diện để thao tác với mạng (Http, ftp, smtp, dns)
+Presentation: Xử lí data nhập vào, encrypt để chỉ máy trao đổi thông tin hiểu
+Session: quản lý kết nối giữa các mạng
+Transport: Chuyển data, (thiết lập protocol cao hơn)
+Network: IP, tìm trên network
+Datalink: switch, ethernet, địa chỉ Mac của mỗi máy để router biết
+Physical: dây
+
+Protocol:
+-DNS (Domain name system): nơi kiếm domain (danh bạ cho domain), bao gồm dns server, root, tld, ans
+Domain (tên miền): từ ip -> Tên vd www.jadowdp.com
+Subdomain.ThirdLD.secondLD.topleveldomain(TLD vd .com .edu .vn).root
+Cách hoạt động: lưu ip vào nhiều máy tính
+browser xem trong operating system có ko, nếu nó ko biết operating system qua hỏi DNS resolver(server) (có nhiệm vụ kiểm tra cache),
+nếu cache ko thấy DNS resolver qua kiểm internet service provider(nhà mạng) (ISP), nếu ko có nx ISP kiểm tra cache,hỏi root name server sẽ biết địa chỉ ip của tld server,
+TLD server trả mình alternative name server -> mình nhập vô domain đó nó trả nhà mạng xong trả từ từ về mình ip
+Note của anh pk
+Browser → OS (no cache?) → DNS resolver (no cache?) → ISP (Internet Service Provider, no cache?) → TLD (don’t no that domain but knows which DNS server has it) → returns DNS IP → ISP takes DNS IP and asks that DNS server → DNS server returns web IP → ISP returns IP to our DNS server → our DNS server returns to OS → OS returns to Browser
+
+Câu hỏi: Làm sao TLD server biết được server nào giữ domain của mình trong khi nó không biết domain của mình tương ứng với ip máy nào?
+-Khi đăng ký domain thì sẽ có một cái list ans gửi cho TLD quản lí
+
+-HTTP (HyperText Transfer Protocol): Máy tính gửi Syn(synchrony) cho server, Server Syn-ack(gửi lại syn cho mình)(synchrony-acknowledge), Ack => cả quá trình 3 bước gọi là TCP, thiết lập kết nối
+Mình gửi một string cho server(request) -> server gửi lại string(response) (gửi ký tự cho thằng TCP - transport)
+Protocol: các bước thủ tục để thực hiện một gì đó
+
+-HTTPS: TCP -> SSL: TLS setup(transport layer security - encrypt req và res), request ko đọc đc, response ko đọc đc
+TLS: generate private key + public key, phải dùng cả 2 key mới giải đc cái req và res encrypt
+Máy mình sẽ giữ cái private key, gửi server public key 1, gửi thêm thuật toán để generate key(RSA,SHA), server khi có encrypted req thì nó sẽ gửi cho mình cái encrypted res với public key 2
+Cái máy sus nó chỉ có một trong 2 key với cái encrypt data của mình nên ko hiểu
+Cuối cùng thì mình sẽ có 2 public key và 1 private key
+chỉ có public key mới mã hóa đc thông tin
+Máy mình có 1 public key và private key, server cũng vậy, máy mình gửi server public key, còn server gửi mình cái public key của nó
